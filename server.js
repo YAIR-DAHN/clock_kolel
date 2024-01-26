@@ -1,24 +1,20 @@
 const fs = require('fs');
 const path = require('path');
 const listName = JSON.parse(fs.readFileSync('nameList.json', 'utf8')); // קבלת רשימת האברכים
-const { HebrewCalendar, HDate, Location, Event } = require('@hebcal/core'); // ייבוא חבילת תאריכים עבריים
-const express = require('express');
+const {HDate,} = require('@hebcal/core'); // ייבוא חבילת תאריכים עבריים
+
 
 function openFile(filePath) {
     let content = fs.readFileSync(path.resolve(__dirname, filePath), { encoding: 'utf8', flag: 'r' });
     return content;
 }
 
-let fileName = 'abc.dat';
+let fileName = 'rawData.dat';
 let r = openFile(fileName);
 let lines = r.split('\n'); // הכלת כל שורה כמערך
 
-// const hd2 = new HDate(new Date(2024, 0, 25));
-// console.log(hd2.renderGematriya(true));
-
 // הסרת רווחים מההתחלה + שבירה לפי טאבים ורווחים + הסרת העמודות האחרונות
 let data = lines.map(line => line.trimStart().split(/[\t ]/).slice(0, -2));
-
 
 let idData = {};
 
@@ -118,8 +114,6 @@ for (let line of data) {
         }
     }
 }
-
-
 
 for (let idValue in idData) {
 
