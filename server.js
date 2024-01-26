@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const listName = JSON.parse(fs.readFileSync('nameList.json', 'utf8')); // קבלת רשימת האברכים
-const {HDate,} = require('@hebcal/core'); // ייבוא חבילת תאריכים עבריים
+const {HDate} = require('@hebcal/core'); // ייבוא חבילת תאריכים עבריים
 
 
 function openFile(filePath) {
